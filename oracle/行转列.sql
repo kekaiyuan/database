@@ -200,14 +200,12 @@ table2
 
 table3 （result）
 
-部门dep 一月份      二月份      三月份
---------------------------------------
-      01      10                  
-      02      10         8         
-      03                 5        8
-      04                          9
-
-------------------------------------------
+部门                       一月份        二月份        三月份
+-------------------- ---------- ---------- ----------
+国内业务一部                10          0          0
+国内业务二部                10          8          0
+国内业务三部                 0           5          8
+国际业务部                    0           0          9
 
 create table yj01(
        month varchar2(10),
@@ -241,7 +239,7 @@ create view v_yj01 as
     from yj01
    group by deptno;
 
-select dname, nvl(Jan, 0) 一月份, nvl(Feb, 0) 二月份, nvl(Mar, 0) 三月份
+select dname 部门, nvl(Jan, 0) 一月份, nvl(Feb, 0) 二月份, nvl(Mar, 0) 三月份
   from v_yj01, yjdept
  where v_yj01.deptno = yjdept.deptno
  order by yjdept.deptno;
